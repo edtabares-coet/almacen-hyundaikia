@@ -52,6 +52,14 @@ Modelos con más demanda a priorizar en contenido: Tucson / IX35, Santa Fe, Acce
   - Convertir imágenes a WebP (no hay herramienta instalada en el equipo).
   - Revisar la afirmación "Distribuidor autorizado" con el cliente (debe ser verificable).
 
+## Ficha de Google (Google Business Profile)
+
+- Nombre en Maps: "HYUNDAIKIA SAS" · categoría "Tienda de repuestos para automóviles" · 4,5 ★ (33 reseñas, oct-2026).
+- Enlace estable: https://www.google.com/maps?cid=13270207349620666020 (usado en el sitio y en el schema).
+- **No está reclamada** (aparece "Reclamar esta empresa"): el dueño debe reclamarla con su cuenta de Google.
+- Su sitio web apunta a `tarjetainfo.com` (tercero) y su teléfono es el PBX; cambiar a la URL del sitio y agregar WhatsApp.
+- Horario coincide con el sitio. Si cambia la calificación, actualizar el chip "4,5 en Google" del hero.
+
 ## Hoja de ruta
 
 1. **Base técnica:** `<head>` real, viewport, botón flotante WhatsApp, Analytics con evento de clic, imágenes como archivos WebP, sitemap/robots.
