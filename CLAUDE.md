@@ -3,6 +3,7 @@
 ## La necesidad (en una frase)
 
 **Atraer compradores y vender repuestos para carros, principalmente HYUNDAI y KIA.**
+Hyundai y Kia son las marcas principales (especialidad y nombre del almacén), pero **también se venden repuestos de otras marcas**: el sitio no debe dar a entender que solo atienden Hyundai/Kia.
 Cada decisión del sitio se mide contra esto: ¿trae más búsquedas orgánicas o más conversaciones de WhatsApp que terminan en venta?
 
 ## El negocio
@@ -24,12 +25,13 @@ Ambos terminan la compra por **WhatsApp**: piden referencia, modelo/año (idealm
 
 ## Productos
 
-Repuestos originales Hyundai y Kia: motor y sincronización (kits, correas, bujías), suspensión y rodamiento (amortiguadores, bocines, bujes), eléctrico e iluminación (luces, exploradoras, espejos, módulos), baterías.
+Especialidad en repuestos originales Hyundai y Kia, y venta de repuestos para otras marcas bajo pedido/consulta: motor y sincronización (kits, correas, bujías), suspensión y rodamiento (amortiguadores, bocines, bujes), eléctrico e iluminación (luces, exploradoras, espejos, módulos), baterías.
 Modelos con más demanda a priorizar en contenido: Tucson / IX35, Santa Fe, Accent, i10, Staria, Picanto, Rio, Cerato, Sportage, Sorento, Soul.
 
 ## Objetivos del sitio
 
-- **Crecimiento orgánico:** aparecer en Google para "repuestos Hyundai Medellín", "repuestos Kia Medellín" y búsquedas por modelo + repuesto.
+- **Crecimiento orgánico:** aparecer en Google para "repuestos Hyundai Medellín", "repuestos Kia Medellín" y búsquedas por modelo + repuesto (prioridad); en segundo plano, "repuestos para carros Medellín / La Candelaria / Palacé" para captar otras marcas.
+- **Otras marcas:** incluir en el sitio un mensaje y CTA tipo "¿Tu carro es de otra marca? Escríbenos y te lo conseguimos" (el buscador de WhatsApp debe permitir "Otra marca").
 - **Conversión a WhatsApp:** todo CTA lleva a `wa.me/573108307228` con mensaje prellenado (marca, modelo/año, repuesto).
 - **Medición:** cada clic a WhatsApp debe registrarse como evento en Analytics.
 
@@ -48,6 +50,7 @@ Modelos con más demanda a priorizar en contenido: Tucson / IX35, Santa Fe, Acce
   - Título, meta description, canonical y Open Graph están **dentro de un comentario HTML** — Google no los ve.
   - El canonical apunta a `almacenhyundaikia.com`, dominio que aún no existe.
   - Sin botón flotante de WhatsApp, sin Analytics, sin favicon, sitemap ni robots.txt.
+  - El buscador solo ofrece Hyundai/Kia y los textos hablan solo de esas marcas; falta la opción "Otra marca".
 
 ## Hoja de ruta
 
