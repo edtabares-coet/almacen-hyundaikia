@@ -2,8 +2,10 @@
 
 Landing page de **ALMACÉN HYUNDAIKIA S.A.S**, almacén de repuestos originales Hyundai y Kia en Medellín (Av. Palacé, La Candelaria).
 
-- **Producción:** [`index.html`](./index.html) — página autocontenida (HTML + CSS + imágenes embebidas en base64), sin dependencias externas salvo Google Fonts.
-- **`assets/`** — imágenes fuente (logos, fotos de producto) usadas para generar las versiones optimizadas embebidas en `index.html`.
+- **Producción:** [`index.html`](./index.html) — página estática (HTML + CSS), sin dependencias externas salvo Google Fonts.
+- **`img/`** — imágenes optimizadas que usa la página, favicon y `apple-touch-icon`.
+- **`assets/`** — imágenes fuente en alta resolución (logos, fotos de producto).
+- `sitemap.xml` y `robots.txt` para buscadores. Contexto del negocio y hoja de ruta en [`CLAUDE.md`](./CLAUDE.md).
 
 ## Contenido
 
