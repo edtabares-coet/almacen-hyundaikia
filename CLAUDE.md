@@ -50,7 +50,15 @@ Modelos con más demanda a priorizar en contenido: Tucson / IX35, Santa Fe, Acce
   - **Analytics:** el código está listo pero inactivo hasta poner el ID de GA4 en la variable `GA_ID` de `index.html`.
   - Canonical, sitemap y Open Graph apuntan a la URL de GitHub Pages; cambiarlos cuando haya dominio propio.
   - Convertir imágenes a WebP (no hay herramienta instalada en el equipo).
-  - Revisar la afirmación "Distribuidor autorizado" con el cliente (debe ser verificable).
+- Rediseño (nov-2026): página corta orientada a conversión — topbar con dirección/horario, cotizador en el hero, catálogo con cada repuesto como chip que abre WhatsApp prellenado, banda "12+ años · Distribuidores autorizados · Asesoría · Domicilios", CTA "otra marca", mapa, barra fija WhatsApp/Llamar en móvil.
+- Decisiones del cliente: mostrar "Distribuidores autorizados" sin limitar a 2 marcas; no mostrar "1 punto de venta" ni conteos de marcas/categorías.
+
+## Palabras clave de producto (deben verse en el sitio)
+
+- **Motor y sincronización:** partes internas de motor, bujías, kits de sincronización, correas.
+- **Suspensión y rodamiento:** componentes de suspensión, amortiguadores, bocinas.
+- **Eléctrico e iluminación:** partes eléctricas, luces principales, exploradoras, espejos.
+- **Baterías:** baterías de arranque, bornes y terminales, instalación en tienda.
 
 ## Ficha de Google (Google Business Profile)
 
