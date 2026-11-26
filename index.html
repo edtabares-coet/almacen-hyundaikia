@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Seguridad: solo se cargan recursos de este sitio y de los servicios listados
+     (Google Fonts, Google Maps, Google Analytics y jsDelivr para el lector de tarjeta). -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://cdn.jsdelivr.net https://www.googletagmanager.com; worker-src 'self' blob: https://cdn.jsdelivr.net; connect-src 'self' blob: data: https://cdn.jsdelivr.net https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; img-src 'self' data: blob: https://*.google-analytics.com https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; frame-src https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Repuestos Hyundai y Kia en Medellín | Almacén HyundaiKia S.A.S</title>
 <meta name="description" content="Repuestos originales Hyundai y Kia en Medellín (y otras marcas): kits de sincronización, correas, bujías, amortiguadores, bocinas, luces, exploradoras, espejos y baterías. Av. Palacé, La Candelaria. Domicilios. Cotiza por WhatsApp 313 669 7880.">
 <link rel="canonical" href="https://edtabares-coet.github.io/almacen-hyundaikia/">
@@ -18,6 +22,8 @@
 <meta property="og:description" content="Repuestos originales Hyundai y Kia (y otras marcas): motor y sincronización, suspensión, eléctrico e iluminación y baterías. Av. Palacé #38-115, La Candelaria. Cotiza por WhatsApp.">
 <meta property="og:url" content="https://edtabares-coet.github.io/almacen-hyundaikia/">
 <meta property="og:image" content="https://edtabares-coet.github.io/almacen-hyundaikia/img/hero-repuestos.jpg">
+<meta property="og:image:width" content="1400">
+<meta property="og:image:height" content="764">
 <meta property="og:image:alt" content="Repuestos originales Hyundai y Kia sobre mesón de taller">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -34,9 +40,11 @@
 {
   "@context": "https://schema.org",
   "@type": "AutoPartsStore",
+  "@id": "https://edtabares-coet.github.io/almacen-hyundaikia/#almacen",
   "name": "ALMACEN HYUNDAIKIA S.A.S",
-  "alternateName": "HyundaiKia Medellín",
+  "alternateName": ["Almacén HyundaiKia", "HyundaiKia Medellín", "HYUNDAIKIA SAS"],
   "url": "https://edtabares-coet.github.io/almacen-hyundaikia/",
+  "logo": "https://edtabares-coet.github.io/almacen-hyundaikia/img/apple-touch-icon.png",
   "image": "https://edtabares-coet.github.io/almacen-hyundaikia/img/hero-repuestos.jpg",
   "description": "Almacén de repuestos originales Hyundai y Kia en Medellín, con repuestos para otras marcas bajo pedido: partes de motor, sincronización, suspensión, rodamiento, baterías, partes eléctricas e iluminación. Asesoría técnica y entrega a domicilio en Medellín y el Valle de Aburrá.",
   "brand": [
@@ -44,7 +52,6 @@
     { "@type": "Brand", "name": "Kia" }
   ],
   "telephone": "+573136697880",
-  "email": "hyundaikia@outlook.com",
   "taxID": "9006907176",
   "foundingDate": "2014-01-10",
   "openingHoursSpecification": [
@@ -104,6 +111,20 @@
     "areaServed": "CO",
     "availableLanguage": "es"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "¿Dónde comprar repuestos Hyundai y Kia en Medellín?", "acceptedAnswer": { "@type": "Answer", "text": "En Almacén HyundaiKia S.A.S, en la Av. Palacé #38-115, barrio La Candelaria (centro de Medellín). Atendemos desde 2014 con repuestos originales para Hyundai y Kia, y conseguimos repuestos para otras marcas." } },
+    { "@type": "Question", "name": "¿Los repuestos son originales?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Somos distribuidores autorizados y trabajamos repuestos originales. Si buscas una alternativa de otra calidad o precio, te asesoramos según tu vehículo." } },
+    { "@type": "Question", "name": "¿Cómo cotizo un repuesto?", "acceptedAnswer": { "@type": "Answer", "text": "Por WhatsApp al 313 669 7880: envíanos la marca, la línea, el año del modelo y, si lo tienes, el VIN o número de chasis de la tarjeta de propiedad. Te confirmamos disponibilidad y precio." } },
+    { "@type": "Question", "name": "¿Hacen domicilios?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, despachamos a talleres y casas en Medellín y todo el Valle de Aburrá: Envigado, Itagüí, Sabaneta, Bello, La Estrella y Caldas." } },
+    { "@type": "Question", "name": "¿Venden repuestos para otras marcas?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Nuestra especialidad es Hyundai y Kia, pero conseguimos repuestos para otras marcas. Escríbenos la referencia o el modelo de tu carro." } },
+    { "@type": "Question", "name": "¿Cuál es el horario de atención?", "acceptedAnswer": { "@type": "Answer", "text": "Lunes a viernes de 8:00 a.m. a 6:00 p.m. y sábados de 8:00 a.m. a 2:00 p.m." } }
+  ]
 }
 </script>
 
@@ -252,6 +273,15 @@
   .chips a:hover{ border-color:var(--blue); background:#fff; }
   .chips a::after{ content:"→"; font-size:0.8em; opacity:0.55; }
   .cat-body .btn{ margin-top:auto; width:100%; }
+  .modelos{ display:flex; flex-wrap:wrap; align-items:center; gap:0.5rem 0.75rem; margin:-0.25rem 0 1.25rem; }
+  .modelos-label{ font-size:0.88rem; font-weight:600; color:var(--text-soft); }
+
+  /* ---------- Preguntas frecuentes ---------- */
+  .faq{ display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 1.5rem; }
+  @media (max-width:760px){ .faq{ grid-template-columns:1fr; } }
+  .faq details{ border:1px solid var(--border); border-radius:10px; padding:0.8rem 1rem; background:#fff; }
+  .faq summary{ cursor:pointer; font-weight:700; font-size:0.97rem; }
+  .faq details p{ margin-top:0.5rem; color:var(--text-soft); font-size:0.93rem; }
 
   /* ---------- Banda de confianza ---------- */
   .trust-band{ background:var(--blue); color:#fff; }
@@ -454,6 +484,23 @@
           <p>Toca el repuesto que necesitas y cotízalo directo por WhatsApp.</p>
         </div>
       </div>
+      <div class="modelos">
+        <span class="modelos-label">Modelos que más atendemos:</span>
+        <ul class="chips">
+          <li><a href="https://wa.me/573136697880" data-item="repuestos para Hyundai Tucson / IX35">Tucson / IX35</a></li>
+          <li><a href="https://wa.me/573136697880" data-item="repuestos para Hyundai Santa Fe">Santa Fe</a></li>
+          <li><a href="https://wa.me/573136697880" data-item="repuestos para Hyundai Accent">Accent</a></li>
+          <li><a href="https://wa.me/573136697880" data-item="repuestos para Hyundai i10 / Grand i10">i10</a></li>
+          <li><a href="https://wa.me/573136697880" data-item="repuestos para Hyundai Creta">Creta</a></li>
+          <li><a href="https://wa.me/573136697880" data-item="repuestos para Hyundai Staria / H1">Staria / H1</a></li>
+          <li><a href="https://wa.me/573136697880" data-item="repuestos para Kia Picanto">Picanto</a></li>
+          <li><a href="https://wa.me/573136697880" data-item="repuestos para Kia Rio">Rio</a></li>
+          <li><a href="https://wa.me/573136697880" data-item="repuestos para Kia Cerato">Cerato</a></li>
+          <li><a href="https://wa.me/573136697880" data-item="repuestos para Kia Sportage">Sportage</a></li>
+          <li><a href="https://wa.me/573136697880" data-item="repuestos para Kia Sorento">Sorento</a></li>
+          <li><a href="https://wa.me/573136697880" data-item="repuestos para Kia Soul">Soul</a></li>
+        </ul>
+      </div>
       <div class="cat-grid">
         <article class="cat-card">
           <div class="cat-photo">
@@ -584,7 +631,7 @@
           </div>
           <div class="info-row">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-            <div><span class="label">Correo</span><a href="mailto:hyundaikia@outlook.com">hyundaikia@outlook.com</a></div>
+            <div><span class="label">Correo</span><a href="#contacto-correo" class="js-correo" data-u="hyundaikia" data-d="outlook.com">Escríbenos un correo</a></div>
           </div>
           <div class="actions">
             <a class="btn btn-primary btn-sm" href="https://www.google.com/maps?cid=13270207349620666020" target="_blank" rel="noopener">Cómo llegar</a>
@@ -594,6 +641,42 @@
         <div class="map">
           <iframe title="Mapa: Almacén HyundaiKia, Av. Palacé #38-115, Medellín" src="https://maps.google.com/maps?q=6.2398803,-75.5718316&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
+      </div>
+    </div>
+  </section>
+  <section id="preguntas" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Preguntas frecuentes</span>
+          <h2>Lo que nos preguntan antes de comprar</h2>
+        </div>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>¿Dónde comprar repuestos Hyundai y Kia en Medellín?</summary>
+          <p>En Almacén HyundaiKia S.A.S, en la Av. Palacé #38-115, barrio La Candelaria (centro de Medellín). Atendemos desde 2014 con repuestos originales para Hyundai y Kia, y conseguimos repuestos para otras marcas.</p>
+        </details>
+        <details>
+          <summary>¿Los repuestos son originales?</summary>
+          <p>Sí. Somos distribuidores autorizados y trabajamos repuestos originales. Si buscas una alternativa de otra calidad o precio, te asesoramos según tu vehículo.</p>
+        </details>
+        <details>
+          <summary>¿Cómo cotizo un repuesto?</summary>
+          <p>Por WhatsApp al 313 669 7880: envíanos la marca, la línea, el año del modelo y, si lo tienes, el VIN o número de chasis de la tarjeta de propiedad. Te confirmamos disponibilidad y precio.</p>
+        </details>
+        <details>
+          <summary>¿Hacen domicilios?</summary>
+          <p>Sí, despachamos a talleres y casas en Medellín y todo el Valle de Aburrá: Envigado, Itagüí, Sabaneta, Bello, La Estrella y Caldas.</p>
+        </details>
+        <details>
+          <summary>¿Venden repuestos para otras marcas?</summary>
+          <p>Sí. Nuestra especialidad es Hyundai y Kia, pero conseguimos repuestos para otras marcas. Escríbenos la referencia o el modelo de tu carro.</p>
+        </details>
+        <details>
+          <summary>¿Cuál es el horario de atención?</summary>
+          <p>Lunes a viernes de 8:00 a.m. a 6:00 p.m. y sábados de 8:00 a.m. a 2:00 p.m.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -645,6 +728,16 @@
   }
 
   var WA = 'https://wa.me/573136697880?text=';
+
+  /* El correo no se muestra ni aparece completo en el HTML (evita spam de robots):
+     se arma solo cuando la persona toca el enlace. */
+  document.querySelectorAll('.js-correo').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      gtag('event', 'email_click', {});
+      window.location.href = 'mailto:' + a.dataset.u + '@' + a.dataset.d + '?subject=' + encodeURIComponent('Cotización de repuesto');
+    });
+  });
 
   /* Cada repuesto del catálogo abre WhatsApp con el mensaje ya escrito. */
   document.querySelectorAll('a[data-item]').forEach(function(a){

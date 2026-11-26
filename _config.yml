@@ -1,0 +1,9 @@
+# GitHub Pages: archivos del repositorio que NO se publican en el sitio.
+# CLAUDE.md tiene notas internas del negocio; assets/ son las fotos originales en alta resolución.
+exclude:
+  - CLAUDE.md
+  - README.md
+  - assets/
+  - _pruebas/
+include:
+  - .well-known

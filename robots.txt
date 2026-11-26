@@ -1,4 +1,21 @@
+# Buscadores y asistentes de IA son bienvenidos: queremos aparecer en sus respuestas.
 User-agent: *
 Allow: /
+Disallow: /prueba/
+
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Google-Extended
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /prueba/
 
 Sitemap: https://edtabares-coet.github.io/almacen-hyundaikia/sitemap.xml

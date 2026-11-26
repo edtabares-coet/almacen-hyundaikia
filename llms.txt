@@ -1,0 +1,32 @@
+# Almacén HyundaiKia S.A.S
+
+> Almacén de repuestos originales para vehículos Hyundai y Kia en Medellín, Colombia, desde 2014. También consigue repuestos para otras marcas. Venta en mostrador en la Av. Palacé #38-115 (La Candelaria) y domicilios en Medellín y el Valle de Aburrá. Cotizaciones por WhatsApp al +57 313 669 7880.
+
+## Datos del negocio
+
+- Razón social: ALMACEN HYUNDAIKIA S.A.S — NIT 900.690.717-6
+- Dirección: Av. Palacé #38-115, barrio La Candelaria, Medellín, Antioquia, Colombia
+- WhatsApp y celular de ventas: +57 313 669 7880 · PBX: (604) 444 1961
+- Horario: lunes a viernes 8:00–18:00, sábados 8:00–14:00
+- Cobertura: Medellín, Envigado, Itagüí, Sabaneta, Bello, La Estrella y Caldas
+- Ficha de Google Maps: https://www.google.com/maps?cid=13270207349620666020
+
+## Repuestos que vende
+
+- Motor y sincronización: partes internas de motor, bujías, kits de sincronización, correas
+- Suspensión y rodamiento: componentes de suspensión, amortiguadores, bocinas
+- Eléctrico e iluminación: partes eléctricas, luces principales, exploradoras, espejos
+- Baterías: baterías de arranque, bornes y terminales, instalación en tienda
+
+## Modelos que más atiende
+
+Hyundai: Tucson / IX35, Santa Fe, Accent, i10 / Grand i10, Creta, Staria / H1.
+Kia: Picanto, Rio, Cerato, Sportage, Sorento, Soul.
+
+## Cómo cotizar
+
+Enviar por WhatsApp la marca, la línea, el año del modelo, el VIN o número de chasis y el repuesto que se necesita. El sitio web tiene un cotizador que arma el mensaje automáticamente.
+
+## Páginas
+
+- [Inicio y cotizador](https://edtabares-coet.github.io/almacen-hyundaikia/)
