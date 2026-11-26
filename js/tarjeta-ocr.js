@@ -61,15 +61,36 @@
     })[0] || '';
   }
 
+  /* Número de motor: letras y números (ej. G4KDJU123456), distinto del VIN, la placa o una fecha. */
+  function esMotor(t, vin){
+    return t.length >= 6 && t.length <= 16 && t !== vin && /[A-Z]/.test(t) && (t.match(/\d/g) || []).length >= 4
+      && !/^[A-Z]{3}\d{2,3}[A-Z]?$/.test(t) && !/^(?:KG|PSJ|CC|HP)/.test(t);
+  }
+
+  /* En la tarjeta el valor va debajo de la etiqueta "NÚMERO DE MOTOR" (o al lado, según la lectura). */
+  function buscarMotor(lineas, vin){
+    var limpiar = function(s){ return s.split(' ').map(function(t){ return t.replace(/[^A-Z0-9]/g, ''); }); };
+    for (var i = 0; i < lineas.length; i++) {
+      var k = lineas[i].search(/MOTOR/);
+      if (k === -1) continue;
+      var cand = limpiar(lineas[i].slice(k + 5)).concat(limpiar(lineas[i + 1] || ''), limpiar(lineas[i + 2] || ''));
+      for (var j = 0; j < cand.length; j++) if (esMotor(cand[j], vin)) return cand[j];
+    }
+    /* Respaldo: código de motor Hyundai/Kia (G4KD…, D4HA…, G4LA…) en cualquier parte. */
+    var m = lineas.join(' ').match(/\b[GDLC]\d[A-Z]{2}[A-Z0-9]{4,12}\b/);
+    return m && esMotor(m[0], vin) ? m[0] : '';
+  }
+
   function esAnio(n){ n = +n; return n >= 1980 && n <= new Date().getFullYear() + 1; }
 
   /* Convierte el texto leído por OCR en los datos del vehículo. */
   function parse(texto){
     var T = texto.toUpperCase().replace(/[|]/g, ' ');
     var lineas = T.split(/\n+/).map(function(l){ return l.replace(/\s+/g, ' ').trim(); }).filter(Boolean);
-    var r = { marca:'', linea:'', anio:'', cilindraje:'', combustible:'', vin:'', transmision:'' };
+    var r = { marca:'', linea:'', anio:'', cilindraje:'', combustible:'', vin:'', motor:'', transmision:'' };
 
     r.vin = buscarVin(lineas);
+    r.motor = buscarMotor(lineas, r.vin);
 
     /* Marca: la línea de valores de la tarjeta suele ser "PLACA MARCA LÍNEA MODELO CILINDRADA". */
     var lineaMarca = '';
@@ -228,9 +249,11 @@
           var n = 0;
 
           if (d.marca) n += poner('finderMarca', esHK ? titulo(d.marca) : 'Otra marca');
-          var modelo = [esHK || !d.marca ? '' : d.marca, d.linea, d.anio].filter(Boolean).join(' ');
+          var modelo = [esHK || !d.marca ? '' : d.marca, d.linea].filter(Boolean).join(' ');
           if (modelo) n += poner('finderModelo', titulo(modelo));
+          n += poner('finderAnio', d.anio);
           n += poner('finderVin', d.vin);
+          n += poner('finderMotor', d.motor);
           n += poner('finderCaja', d.transmision);
           var extra = poner('finderCilindraje', d.cilindraje) + poner('finderCombustible', d.combustible);
           n += extra;
@@ -241,7 +264,7 @@
           if (typeof gtag === 'function') gtag('event', 'tarjeta_escaneada', { campos: n });
 
           if (n >= 2) {
-            mostrar('Listo: revisa los datos en verde' + (d.vin ? ' (sobre todo el VIN, letra por letra)' : '') + (d.transmision ? '' : ', elige la transmisión') + ' y escribe el repuesto.', 'is-ok');
+            mostrar('Listo: revisa los datos en verde' + (d.vin || d.motor ? ' (sobre todo el VIN y el número de motor, letra por letra)' : '') + (d.transmision ? '' : ', elige la transmisión') + ' y escribe el repuesto.', 'is-ok');
           } else if (n === 1) {
             mostrar('Leímos solo una parte. Revisa los datos y completa lo que falte, o toma otra foto más cerca y con buena luz.', 'is-error');
           } else {

@@ -387,8 +387,12 @@
             </select>
           </div>
           <div class="finder-field">
-            <label for="finderModelo">Modelo y año</label>
-            <input id="finderModelo" type="text" placeholder="Ej: Tucson 2019" autocomplete="off">
+            <label for="finderModelo">Línea / modelo</label>
+            <input id="finderModelo" type="text" placeholder="Ej: Tucson" autocomplete="off">
+          </div>
+          <div class="finder-field">
+            <label for="finderAnio">Año del modelo</label>
+            <input id="finderAnio" type="text" inputmode="numeric" maxlength="4" placeholder="Ej: 2019" autocomplete="off">
           </div>
           <div class="finder-field">
             <label for="finderCaja">Transmisión</label>
@@ -401,6 +405,10 @@
           <div class="finder-field">
             <label for="finderVin">VIN / Chasis</label>
             <input id="finderVin" type="text" placeholder="17 caracteres" autocomplete="off" maxlength="20" spellcheck="false" style="text-transform:uppercase">
+          </div>
+          <div class="finder-field">
+            <label for="finderMotor">Número de motor</label>
+            <input id="finderMotor" type="text" placeholder="Ej: G4KD…" autocomplete="off" maxlength="20" spellcheck="false" style="text-transform:uppercase">
           </div>
           <details class="finder-extra finder-field--full" id="finderExtra">
             <summary>Más datos del vehículo (opcional)</summary>
@@ -656,7 +664,7 @@
     var marcaSel = document.getElementById('finderMarca');
     var modeloIn = document.getElementById('finderModelo');
     marcaSel.addEventListener('change', function(){
-      modeloIn.placeholder = marcaSel.value === 'Otra marca' ? 'Ej: Mazda 3 2018' : 'Ej: Tucson 2019';
+      modeloIn.placeholder = marcaSel.value === 'Otra marca' ? 'Ej: Mazda 3' : 'Ej: Tucson';
     });
     form.addEventListener('submit', function(e){
       e.preventDefault();
@@ -665,16 +673,20 @@
       var repuesto = document.getElementById('finderRepuesto').value.trim();
       var valor = function(id){ return document.getElementById(id).value.trim(); };
       var caja = valor('finderCaja');
+      var anio = valor('finderAnio');
       var vin = valor('finderVin').toUpperCase();
+      var motor = valor('finderMotor').toUpperCase();
       var cc = valor('finderCilindraje');
       var combustible = valor('finderCombustible');
 
       var lines = ['Hola, quiero cotizar un repuesto:', '• Marca: ' + marca];
-      if (modelo) lines.push('• Modelo/Año: ' + modelo);
+      if (modelo) lines.push('• Línea: ' + modelo);
+      if (anio) lines.push('• Año del modelo: ' + anio);
       if (caja) lines.push('• Transmisión: ' + caja);
       if (cc) lines.push('• Cilindraje: ' + cc + ' cc');
       if (combustible) lines.push('• Combustible: ' + combustible);
       if (vin) lines.push('• VIN/Chasis: ' + vin);
+      if (motor) lines.push('• Número de motor: ' + motor);
       if (repuesto) lines.push('• Repuesto: ' + repuesto);
 
       gtag('event', 'whatsapp_click', { ubicacion: 'cotizador', marca: marca, repuesto: repuesto, escaneo: form.dataset.scanned === '1' ? 'si' : 'no' });
