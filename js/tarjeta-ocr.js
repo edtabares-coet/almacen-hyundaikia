@@ -43,6 +43,21 @@
     return t;
   }
 
+  /* El OCR a veces mete una o dos "S" de más entre los números (KMHJUS8S1… por KMHJU81…):
+     si al quitarlas queda un VIN válido, se usa esa lectura. */
+  function quitarSobrantes(tok){
+    var t = tok.toUpperCase().replace(/[^A-Z0-9]/g, ''), sobran = t.length - 17, out = [];
+    if (sobran < 1 || sobran > 2) return out;
+    var pos = [];
+    for (var i = 0; i < t.length; i++) if (t[i] === 'S') pos.push(i);
+    var quitar = function(idx){ return t.split('').filter(function(_, k){ return idx.indexOf(k) === -1; }).join(''); };
+    pos.forEach(function(a, x){
+      if (sobran === 1) out.push(quitar([a]));
+      else pos.slice(x + 1).forEach(function(b){ out.push(quitar([a, b])); });
+    });
+    return out.map(limpiarVin).filter(Boolean);
+  }
+
   /* La tarjeta trae el VIN dos veces (VIN y número de chasis): se elige la lectura
      que más se repite y, a igualdad, la de un fabricante conocido. */
   function buscarVin(lineas){
@@ -54,6 +69,8 @@
           var v = c && limpiarVin(c);
           if (v) votos[v] = (votos[v] || 0) + 1;
         });
+        var alternativas = quitarSobrantes(t);
+        if (alternativas.length === 1) votos[alternativas[0]] = (votos[alternativas[0]] || 0) + 0.5;
       });
     });
     return Object.keys(votos).sort(function(a, b){
@@ -81,6 +98,13 @@
     return m && esMotor(m[0], vin) ? m[0] : '';
   }
 
+  /* Cilindraje: la tarjeta lo escribe con punto de miles ("1.999"); el OCR puede leer coma o apóstrofo. */
+  var CC = "(\\d[.,'´]\\s?\\d{3}|\\d{3,4})(?![\\d.,]\\d)";
+  function aCC(s){
+    var n = (s || '').replace(/\D/g, '');
+    return +n >= 600 && +n <= 8000 ? n : '';
+  }
+
   function esAnio(n){ n = +n; return n >= 1980 && n <= new Date().getFullYear() + 1; }
 
   /* Convierte el texto leído por OCR en los datos del vehículo. */
@@ -97,7 +121,7 @@
     MARCAS.some(function(m){
       var re = new RegExp('\\b' + m.replace(/[-\s]/g, '[-\\s]?') + '\\b');
       for (var i = 0; i < lineas.length; i++) {
-        if (re.test(lineas[i]) && !/^MARCA\b/.test(lineas[i])) {
+        if (re.test(lineas[i])) {
           r.marca = m.replace('MERCEDES BENZ', 'MERCEDES-BENZ'); lineaMarca = lineas[i]; return true;
         }
       }
@@ -107,11 +131,11 @@
 
     if (lineaMarca) {
       var resto = lineaMarca.slice(lineaMarca.search(new RegExp(r.marca.replace('-', '[-\\s]?'))) + r.marca.length).trim();
-      var m = resto.match(/^(.*?)\s+((?:19|20)\d\d)\b(?:\s+(\d{3,4}))?/);
+      var m = resto.match(new RegExp('^(.*?)\\s+((?:19|20)\\d\\d)\\b(?:\\s+' + CC + ')?'));
       if (m) {
         r.linea = m[1].replace(/^[^A-Z0-9]+/, '').trim();
         if (esAnio(m[2])) r.anio = m[2];
-        if (m[3] && +m[3] >= 600 && +m[3] <= 8000) r.cilindraje = m[3];
+        r.cilindraje = aCC(m[3]);
       } else {
         r.linea = resto.split(' ').slice(0, 3).join(' ');
       }
@@ -134,9 +158,18 @@
       else if (r.vin && VIN_ANIO[r.vin[9]]) r.anio = String(VIN_ANIO[r.vin[9]]);
     }
 
+    /* Respaldo: número junto a la etiqueta CILINDRADA o en la fila de abajo, sin confundirlo con el año. */
     if (!r.cilindraje) {
-      var cc = T.match(/CILINDRA[DJ]A[^\n]*\n?[^\n]*?\b(\d{3,4})\b/);
-      if (cc && +cc[1] >= 600 && +cc[1] <= 8000) r.cilindraje = cc[1];
+      var k = T.search(/CILINDRA[DJ]A/);
+      if (k !== -1) {
+        var zona = T.slice(k).split('\n').slice(0, 3).join(' ');
+        var nums = zona.match(new RegExp(CC, 'g')) || [];
+        nums.sort(function(a, b){ return /\D/.test(b) - /\D/.test(a); });
+        nums.some(function(n){
+          if (!/\D/.test(n) && n === r.anio) return false;
+          return !!(r.cilindraje = aCC(n));
+        });
+      }
     }
 
     var comb = T.match(/\b(GASOLINA|DIESEL|DI[EÉ]SEL|ACPM|GAS NATURAL|GNV|EL[EÉ]CTRICO|H[IÍ]BRIDO|GAS[\s\/-]GASOLINA)\b/);
@@ -243,6 +276,8 @@
         })
         .then(function(out){
           if (worker) worker.terminate();
+          /* Solo en memoria de esta página, para diagnosticar lecturas desde la consola. */
+          window.HKTarjeta.ultimoTexto = out.data.text || '';
           var d = parse(out.data.text || '');
           var marcaSel = document.getElementById('finderMarca');
           var esHK = d.marca === 'HYUNDAI' || d.marca === 'KIA';
