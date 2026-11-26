@@ -6,6 +6,8 @@
   'use strict';
 
   var TESSERACT_URL = 'https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';
+  /* Huella del archivo (SRI): si el CDN entregara un archivo alterado, el navegador no lo ejecuta. */
+  var TESSERACT_SRI = 'sha384-GJqSu7vueQ9qN0E9yLPb3Wtpd7OrgK8KmYzC8T1IysG1bcvxvIO4qtYR/D3A991F';
 
   var MARCAS = ['HYUNDAI','KIA','CHEVROLET','RENAULT','MAZDA','TOYOTA','NISSAN','FORD','VOLKSWAGEN','SUZUKI',
     'MITSUBISHI','HONDA','PEUGEOT','CITROEN','FIAT','JEEP','DODGE','SUBARU','SSANGYONG','BMW','MERCEDES BENZ',
@@ -220,6 +222,7 @@
     cargando = new Promise(function(resolve, reject){
       var s = document.createElement('script');
       s.src = TESSERACT_URL; s.async = true;
+      s.integrity = TESSERACT_SRI; s.crossOrigin = 'anonymous';
       s.onload = function(){ resolve(window.Tesseract); };
       s.onerror = function(){ cargando = null; reject(new Error('red')); };
       document.head.appendChild(s);
