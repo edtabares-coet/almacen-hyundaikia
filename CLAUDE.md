@@ -42,14 +42,18 @@ Modelos con más demanda a priorizar en contenido: Tucson / IX35, Santa Fe, Acce
 - **C3 Care Car Center:** domina Google con muchos artículos de blog sobre repuestos Hyundai/Kia en Medellín.
 - Concesionarios oficiales (Car Hyundai, Kia Medellín) para repuesto de concesionario.
 
-## Estado técnico (oct-2026)
+## Estado técnico
 
-- Sitio estático en GitHub Pages: https://edtabares-coet.github.io/almacen-hyundaikia/ (repo `edtabares-coet/almacen-hyundaikia`, rama `main`, raíz).
+- **Producción (26-nov-2026): https://almacenhyundaikia.com.co** — GitHub Pages (repo `edtabares-coet/almacen-hyundaikia`, rama `main`, raíz, archivo `CNAME`). La URL vieja de github.io y `www` redirigen (301) al dominio; HTTPS forzado (Let's Encrypt).
+- DNS en Cloudflare (cuenta de Ed), **solo DNS / nube gris** por decisión: con proxy, la renovación del certificado de GitHub puede fallar. Registros: 4 A + 4 AAAA de GitHub Pages, CNAME `www`, TXT de verificación de GitHub (dominio verificado en la cuenta), SPF/DMARC/DKIM nulos (el dominio no envía correo), CAA.
+- `_config.yml` excluye del sitio publicado `CLAUDE.md`, `README.md` y `assets/` (el repo sigue siendo público).
+- Seguridad en la página: CSP y Referrer-Policy por `<meta>`; correo oculto (se arma al tocar el enlace); SRI en Tesseract.js.
 - `index.html` (una página, ~35 KB) + imágenes optimizadas en `img/`; `assets/` guarda las imágenes fuente en alta resolución.
 - Hecho (Paso 1, nov-2026): `<head>` real con viewport, título, description, canonical y Open Graph; favicon; `sitemap.xml` y `robots.txt`; botón flotante de WhatsApp; opción "Otra marca" en el buscador; eventos `whatsapp_click` / `phone_click`.
 - Pendiente:
   - **Analytics:** el código está listo pero inactivo hasta poner el ID de GA4 en la variable `GA_ID` de `index.html`.
-  - Canonical, sitemap y Open Graph apuntan a la URL de GitHub Pages; cambiarlos cuando haya dominio propio.
+  - DNSSEC (activar en Cloudflare + registro DS en el registrador del `.com.co`), Search Console, Bing Webmaster y sitio web en la ficha de Google.
+  - El lector de tarjeta está en `/prueba/` (rama `prueba/lector`); al aprobarlo, unir `feat/ocr-tarjeta` a `main` y borrar `/prueba/`.
   - Convertir imágenes a WebP (no hay herramienta instalada en el equipo).
 - Rediseño (nov-2026): página corta orientada a conversión — topbar con dirección/horario, cotizador en el hero, catálogo con cada repuesto como chip que abre WhatsApp prellenado, banda "12+ años · Distribuidores autorizados · Asesoría · Domicilios", CTA "otra marca", mapa, barra fija WhatsApp/Llamar en móvil.
 - Decisiones del cliente: mostrar "Distribuidores autorizados" sin limitar a 2 marcas; no mostrar "1 punto de venta" ni conteos de marcas/categorías.
