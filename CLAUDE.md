@@ -12,7 +12,8 @@ Cada decisión del sitio se mide contra esto: ¿trae más búsquedas orgánicas 
 - **Desde:** 10 de enero de 2014 (12+ años en el mercado). Microempresa, punto de venta único.
 - **Actividad:** comercio de autopartes y accesorios (CIIU G4530).
 - **Dirección:** Av. Palacé #38-115, La Candelaria, Medellín (en registros oficiales figura como Carrera 50 #38-115 — es la misma vía; usar **una sola forma** en web, Google Maps y directorios).
-- **Contacto:** WhatsApp/Cel 310 830 7228 · PBX 604 444 1961 · hyundaikia@outlook.com
+- **Contacto:** PBX 604 444 1961 · hyundaikia@outlook.com · Cel/WhatsApp de ventas 313 669 7880 (el 310 830 7228 ya no se usa en el sitio).
+- **WhatsApp de ventas (nov-2026):** el cotizador y todos los botones de WhatsApp van a **Mauricio, 313 669 7880**. En Ubicación se listan los asesores: Mauricio 313 669 7880 · Dario 301 129 5735 · Gabriel 314 735 3020 (solo nombres, sin apellidos, por decisión del cliente).
 - **Horario:** L–V 8:00–18:00 · Sáb 8:00–14:00
 - **Cobertura:** venta en mostrador + domicilios en Medellín y Valle de Aburrá.
 
@@ -32,7 +33,7 @@ Modelos con más demanda a priorizar en contenido: Tucson / IX35, Santa Fe, Acce
 
 - **Crecimiento orgánico:** aparecer en Google para "repuestos Hyundai Medellín", "repuestos Kia Medellín" y búsquedas por modelo + repuesto (prioridad); en segundo plano, "repuestos para carros Medellín / La Candelaria / Palacé" para captar otras marcas.
 - **Otras marcas:** incluir en el sitio un mensaje y CTA tipo "¿Tu carro es de otra marca? Escríbenos y te lo conseguimos" (el buscador de WhatsApp debe permitir "Otra marca").
-- **Conversión a WhatsApp:** todo CTA lleva a `wa.me/573108307228` con mensaje prellenado (marca, modelo/año, repuesto).
+- **Conversión a WhatsApp:** todo CTA lleva a `wa.me/573136697880` (Mauricio) con mensaje prellenado (marca, modelo/año, repuesto).
 - **Medición:** cada clic a WhatsApp debe registrarse como evento en Analytics.
 
 ## Competencia
