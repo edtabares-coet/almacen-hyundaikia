@@ -52,6 +52,10 @@ Modelos con más demanda a priorizar en contenido: Tucson / IX35, Santa Fe, Acce
   - Canonical, sitemap y Open Graph apuntan a la URL de GitHub Pages; cambiarlos cuando haya dominio propio.
   - Convertir imágenes a WebP (no hay herramienta instalada en el equipo).
 - Rediseño (nov-2026): página corta orientada a conversión — topbar con dirección/horario, cotizador en el hero, catálogo con cada repuesto como chip que abre WhatsApp prellenado, banda "12+ años · Distribuidores autorizados · Asesoría · Domicilios", CTA "otra marca", mapa, barra fija WhatsApp/Llamar en móvil.
+- Escáner de tarjeta de propiedad (nov-2026, `js/tarjeta-ocr.js`): OCR en el navegador con Tesseract.js 5.1.1 (CDN jsdelivr, se carga solo al tocar "Escanear"). Extrae marca, línea, año, cilindraje, combustible y VIN/chasis y llena el cotizador; el cliente revisa y edita antes de enviar.
+  - **Privacidad:** la foto nunca sale del dispositivo; no se leen ni envían propietario, cédula ni placa.
+  - La licencia de tránsito **no trae transmisión**: solo se detecta si la línea incluye AT/MT; si no, el cliente la elige.
+  - El OCR puede confundir caracteres del VIN (8↔S, 0↔O): por eso se pide verificarlo. `HKTarjeta.parse(texto)` permite probar el análisis con texto.
 - Decisiones del cliente: mostrar "Distribuidores autorizados" sin limitar a 2 marcas; no mostrar "1 punto de venta" ni conteos de marcas/categorías.
 
 ## Palabras clave de producto (deben verse en el sitio)
@@ -79,6 +83,6 @@ Modelos con más demanda a priorizar en contenido: Tucson / IX35, Santa Fe, Acce
 ## Convenciones
 
 - Idioma del sitio y de la documentación: español (Colombia).
-- Mantener el sitio estático y sin dependencias de build (solo Google Fonts).
+- Mantener el sitio estático y sin dependencias de build (solo Google Fonts, y Tesseract.js bajo demanda para el escáner).
 - No publicar en el repo información financiera, de socios ni el informe comercial de la empresa (el repo es público).
 - Cambios en ramas; `main` es lo que publica GitHub Pages.
