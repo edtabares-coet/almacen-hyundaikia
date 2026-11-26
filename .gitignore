@@ -2,5 +2,6 @@
 .DS_Store
 Thumbs.db
 
-# Fotos de prueba del lector (datos personales: nunca subir)
+# Material privado: fotos de tarjetas reales y documentos internos (nunca subir)
 _pruebas/
+_privado/
