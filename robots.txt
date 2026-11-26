@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /prueba/
 
 Sitemap: https://edtabares-coet.github.io/almacen-hyundaikia/sitemap.xml
