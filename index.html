@@ -220,6 +220,19 @@
   .finder-form .btn{ grid-column:1 / -1; width:100%; padding-block:0.85rem; font-size:1.12rem; }
   .finder-note{ margin-top:0.7rem; font-size:0.78rem; color:var(--text-faint); text-align:center; }
   @media (max-width:420px){ .finder-form{ grid-template-columns:1fr; } }
+  .finder-extra summary{ cursor:pointer; font-size:0.86rem; font-weight:600; color:var(--blue); }
+  .finder-extra-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin-top:0.7rem; }
+  .finder-field input.is-filled, .finder-field select.is-filled{ background:#f1fbf4; border-color:var(--wa); }
+
+  /* ---------- Escáner de tarjeta de propiedad ---------- */
+  .scan{ margin-top:1rem; padding:0.85rem; border:1px dashed var(--border-strong); border-radius:10px; background:var(--bg-soft); }
+  .scan-btn{ width:100%; cursor:pointer; }
+  .scan-status{ margin-top:0.55rem; font-size:0.78rem; color:var(--text-soft); text-align:center; }
+  .scan-status.is-busy{ color:var(--blue); font-weight:600; }
+  .scan-status.is-ok{ color:var(--wa-dark); font-weight:600; }
+  .scan-status.is-error{ color:var(--red); font-weight:600; }
+  .scan-progress{ height:4px; margin-top:0.5rem; border-radius:2px; background:var(--border); overflow:hidden; }
+  .scan-progress span{ display:block; height:100%; width:0; background:var(--blue); transition:width 0.2s ease; }
 
   /* ---------- Repuestos ---------- */
   .section-head{ display:flex; flex-wrap:wrap; align-items:end; justify-content:space-between; gap:0.75rem 2rem; margin-bottom:clamp(1.25rem,3vw,1.75rem); }
@@ -356,6 +369,14 @@
       <div class="finder-card" id="cotizar">
         <h2>Cotiza tu repuesto en 1 minuto</h2>
         <p>Llena los datos y te abrimos WhatsApp con el mensaje listo.</p>
+        <div class="scan" id="scanBox">
+          <label class="btn btn-outline scan-btn" for="scanInput">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8V6a2 2 0 0 1 2-2h2M17 4h2a2 2 0 0 1 2 2v2M21 16v2a2 2 0 0 1-2 2h-2M7 20H5a2 2 0 0 1-2-2v-2"/><rect x="7" y="8" width="10" height="8" rx="1"/><path d="M9.5 11h5M9.5 13.5h3"/></svg>
+            Escanear tarjeta de propiedad
+          </label>
+          <input id="scanInput" type="file" accept="image/*" capture="environment" hidden>
+          <p class="scan-status" id="scanStatus" role="status" aria-live="polite">Toma una foto de tu licencia de tránsito y llenamos los datos del carro por ti. La foto se lee en tu celular: no se guarda ni se envía a ningún servidor.</p>
+        </div>
         <form class="finder-form" id="finderForm">
           <div class="finder-field">
             <label for="finderMarca">Marca</label>
@@ -369,6 +390,31 @@
             <label for="finderModelo">Modelo y año</label>
             <input id="finderModelo" type="text" placeholder="Ej: Tucson 2019" autocomplete="off">
           </div>
+          <div class="finder-field">
+            <label for="finderCaja">Transmisión</label>
+            <select id="finderCaja">
+              <option value="">No sé / no aplica</option>
+              <option value="Automática">Automática</option>
+              <option value="Mecánica">Mecánica</option>
+            </select>
+          </div>
+          <div class="finder-field">
+            <label for="finderVin">VIN / Chasis</label>
+            <input id="finderVin" type="text" placeholder="17 caracteres" autocomplete="off" maxlength="20" spellcheck="false" style="text-transform:uppercase">
+          </div>
+          <details class="finder-extra finder-field--full" id="finderExtra">
+            <summary>Más datos del vehículo (opcional)</summary>
+            <div class="finder-extra-grid">
+              <div class="finder-field">
+                <label for="finderCilindraje">Cilindraje (cc)</label>
+                <input id="finderCilindraje" type="text" inputmode="numeric" placeholder="Ej: 2000" autocomplete="off">
+              </div>
+              <div class="finder-field">
+                <label for="finderCombustible">Combustible</label>
+                <input id="finderCombustible" type="text" placeholder="Ej: Gasolina" autocomplete="off">
+              </div>
+            </div>
+          </details>
           <div class="finder-field finder-field--full">
             <label for="finderRepuesto">Repuesto que buscas</label>
             <input id="finderRepuesto" type="text" placeholder="Ej: Kit de sincronización" autocomplete="off" list="repuestosList">
@@ -617,15 +663,25 @@
       var marca = marcaSel.value;
       var modelo = modeloIn.value.trim();
       var repuesto = document.getElementById('finderRepuesto').value.trim();
+      var valor = function(id){ return document.getElementById(id).value.trim(); };
+      var caja = valor('finderCaja');
+      var vin = valor('finderVin').toUpperCase();
+      var cc = valor('finderCilindraje');
+      var combustible = valor('finderCombustible');
 
       var lines = ['Hola, quiero cotizar un repuesto:', '• Marca: ' + marca];
       if (modelo) lines.push('• Modelo/Año: ' + modelo);
+      if (caja) lines.push('• Transmisión: ' + caja);
+      if (cc) lines.push('• Cilindraje: ' + cc + ' cc');
+      if (combustible) lines.push('• Combustible: ' + combustible);
+      if (vin) lines.push('• VIN/Chasis: ' + vin);
       if (repuesto) lines.push('• Repuesto: ' + repuesto);
 
-      gtag('event', 'whatsapp_click', { ubicacion: 'cotizador', marca: marca, repuesto: repuesto });
+      gtag('event', 'whatsapp_click', { ubicacion: 'cotizador', marca: marca, repuesto: repuesto, escaneo: form.dataset.scanned === '1' ? 'si' : 'no' });
       window.open(WA + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
     });
   })();
 </script>
+<script src="js/tarjeta-ocr.js" defer></script>
 </body>
 </html>
