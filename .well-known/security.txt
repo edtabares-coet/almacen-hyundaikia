@@ -1,0 +1,5 @@
+# Reporte de vulnerabilidades del sitio de Almacén HyundaiKia S.A.S
+Contact: https://wa.me/573136697880
+Expires: 2027-11-30T00:00:00.000Z
+Preferred-Languages: es, en
+Canonical: https://almacenhyundaikia.com.co/.well-known/security.txt

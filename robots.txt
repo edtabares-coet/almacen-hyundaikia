@@ -18,4 +18,4 @@ User-agent: Applebot-Extended
 Allow: /
 Disallow: /prueba/
 
-Sitemap: https://edtabares-coet.github.io/almacen-hyundaikia/sitemap.xml
+Sitemap: https://almacenhyundaikia.com.co/sitemap.xml
