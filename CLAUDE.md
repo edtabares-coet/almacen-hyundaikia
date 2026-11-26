@@ -52,7 +52,8 @@ Modelos con más demanda a priorizar en contenido: Tucson / IX35, Santa Fe, Acce
 - Hecho (Paso 1, nov-2026): `<head>` real con viewport, título, description, canonical y Open Graph; favicon; `sitemap.xml` y `robots.txt`; botón flotante de WhatsApp; opción "Otra marca" en el buscador; eventos `whatsapp_click` / `phone_click`.
 - Pendiente:
   - **Analytics:** el código está listo pero inactivo hasta poner el ID de GA4 en la variable `GA_ID` de `index.html`.
-  - DNSSEC (activar en Cloudflare + registro DS en el registrador del `.com.co`), Search Console, Bing Webmaster y sitio web en la ficha de Google.
+  - DNSSEC (activar en Cloudflare + registro DS en el registrador del `.com.co`) y sitio web en la ficha de Google.
+- Search Console (propiedad de dominio, TXT `google-site-verification`) y Bing Webmaster (CNAME de verificación) configurados el 26-nov-2026, con sitemap enviado e indexación solicitada. No borrar esos registros DNS.
   - Revisión legal de `politica-de-datos.html` (borrador conforme a Ley 1581/2012 y Decreto 1377/2013) y banner de cookies si se activa GA4.
 - Lector de tarjeta y política de tratamiento de datos en producción (26-nov-2026); se eliminó la copia `/prueba/`.
   - Convertir imágenes a WebP (no hay herramienta instalada en el equipo).
