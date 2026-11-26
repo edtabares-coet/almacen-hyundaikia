@@ -248,6 +248,8 @@
   /* ---------- Escáner de tarjeta de propiedad ---------- */
   .scan{ margin-top:1rem; padding:0.85rem; border:1px dashed var(--border-strong); border-radius:10px; background:var(--bg-soft); }
   .scan-btn{ width:100%; cursor:pointer; }
+  .scan-legal{ margin-top:0.35rem; font-size:0.72rem; color:var(--text-faint); text-align:center; }
+  .scan-legal a, .finder-note a{ color:inherit; }
   .scan-status{ margin-top:0.55rem; font-size:0.78rem; color:var(--text-soft); text-align:center; }
   .scan-status.is-busy{ color:var(--blue); font-weight:600; }
   .scan-status.is-ok{ color:var(--wa-dark); font-weight:600; }
@@ -408,6 +410,7 @@
           </label>
           <input id="scanInput" type="file" accept="image/*" capture="environment" hidden>
           <p class="scan-status" id="scanStatus" role="status" aria-live="polite">Toma una foto de tu licencia de tránsito y llenamos los datos del carro por ti. La foto se lee en tu celular: no se guarda ni se envía a ningún servidor.</p>
+          <p class="scan-legal">No leemos el nombre, la cédula ni la placa del propietario. <a href="politica-de-datos.html#aviso">Aviso de privacidad</a></p>
         </div>
         <form class="finder-form" id="finderForm">
           <div class="finder-field">
@@ -470,7 +473,7 @@
             Enviar por WhatsApp
           </button>
         </form>
-        <p class="finder-note">Respuesta en horario de atención · Sin compromiso</p>
+        <p class="finder-note">Respuesta en horario de atención · Sin compromiso<br>Al enviar aceptas nuestra <a href="politica-de-datos.html">Política de tratamiento de datos</a>.</p>
       </div>
     </div>
   </section>
@@ -685,7 +688,7 @@
 <footer>
   <div class="wrap">
     <span><strong>ALMACÉN HYUNDAIKIA S.A.S</strong> · NIT 900.690.717-6 · Repuestos Hyundai, Kia y otras marcas en Medellín desde 2014</span>
-    <span>© 2026 · <a href="https://www.google.com/maps?cid=13270207349620666020" target="_blank" rel="noopener">Google Maps</a></span>
+    <span>© 2026 · <a href="politica-de-datos.html">Política de tratamiento de datos</a> · <a href="https://www.google.com/maps?cid=13270207349620666020" target="_blank" rel="noopener">Google Maps</a></span>
   </div>
 </footer>
 

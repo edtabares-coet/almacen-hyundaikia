@@ -53,7 +53,8 @@ Modelos con más demanda a priorizar en contenido: Tucson / IX35, Santa Fe, Acce
 - Pendiente:
   - **Analytics:** el código está listo pero inactivo hasta poner el ID de GA4 en la variable `GA_ID` de `index.html`.
   - DNSSEC (activar en Cloudflare + registro DS en el registrador del `.com.co`), Search Console, Bing Webmaster y sitio web en la ficha de Google.
-  - El lector de tarjeta está en `/prueba/` (rama `prueba/lector`); al aprobarlo, unir `feat/ocr-tarjeta` a `main` y borrar `/prueba/`.
+  - Revisión legal de `politica-de-datos.html` (borrador conforme a Ley 1581/2012 y Decreto 1377/2013) y banner de cookies si se activa GA4.
+- Lector de tarjeta y política de tratamiento de datos en producción (26-nov-2026); se eliminó la copia `/prueba/`.
   - Convertir imágenes a WebP (no hay herramienta instalada en el equipo).
 - Rediseño (nov-2026): página corta orientada a conversión — topbar con dirección/horario, cotizador en el hero, catálogo con cada repuesto como chip que abre WhatsApp prellenado, banda "12+ años · Distribuidores autorizados · Asesoría · Domicilios", CTA "otra marca", mapa, barra fija WhatsApp/Llamar en móvil.
 - Escáner de tarjeta de propiedad (nov-2026, `js/tarjeta-ocr.js`): OCR en el navegador con Tesseract.js 5.1.1 (CDN jsdelivr, se carga solo al tocar "Escanear"). Extrae marca, línea, año del modelo, cilindraje, combustible, VIN/chasis y número de motor y llena el cotizador; el cliente revisa y edita antes de enviar.
